@@ -564,3 +564,51 @@ body {
     }
   }  
 }
+
+/* Productos Section */
+
+.productos-section {
+  background-color: var(--color-bordo);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+
+  .arcoBlanco {
+    background-color: white;
+    border-radius: 1500px 1500px 0 0;
+  }
+
+  .productos-container {
+    display: flex;
+    justify-content: top;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+
+    .productos-item {
+      width: 30%;
+      margin: 30px;
+
+      img {
+        width: 300px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-family: var(--font-baskerville);
+        color: var(--color-bordo);
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: larger;
+      }
+
+      p {
+        font-family: var(--font-montserrat);
+        color: var(--color-bordo);
+        line-height: 1.6;
+        font-size: smaller;
+      }
+    }
+  }
+}
