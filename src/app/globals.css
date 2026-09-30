@@ -1,0 +1,175 @@
+/* Estilos personalizados para Gusteau's */
+
+/* Fuentes */
+@font-face {
+  font-family: 'Rochester';
+  src: url('/assets/fonts/Rochester-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-rochester: 'Rochester', cursive;
+  --font-baskerville: 'Libre Baskerville', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+/* Variables de colores */
+:root {
+  --color-bordo: #891638;
+  --color-coral: #ED6079;
+  --color-soft-pink: #FDB1BB;
+  --color-floral: #FDF4EF;
+  --color-teal: #41A29A;
+  --color-gold: #D4AF37;
+}
+
+/* Global */
+body {
+  font-family: var(--font-montserrat);
+}
+
+/* Header */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-family: var(--font-rochester);
+  font-size: 1.5rem;
+  color: var(--color-bordo) !important;
+}
+
+.nav-link {
+  font-family: var(--font-montserrat);
+  color: #333 !important;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-coral) !important;
+}
+
+.nav-link.active {
+  color: var(--color-coral) !important;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-coral);
+}
+
+/* Home Section */
+.home-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
+}
+
+.home-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-title-baskerville {
+  font-family: var(--font-baskerville);
+  font-weight: 400;
+}
+
+.home-title-rochester {
+  font-family: var(--font-rochester);
+  font-weight: normal;
+}
+
+.home-subtitle {
+  font-family: var(--font-montserrat);
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-button {
+  background-color: var(--color-coral);
+  border: none;
+  color: white;
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.home-button:hover {
+  background-color: #D44A65;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(237, 96, 121, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .home-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}

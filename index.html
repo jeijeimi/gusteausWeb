@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gusteau's Professional Kitchen | De la ciencia del sabor a la repostería para todos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Rochester&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bordo: '#891638',
+                            coral: '#ED6079',
+                            softPink: '#FDB1BB',
+                            floralWhite: '#FDF4EF',
+                            teal: '#41A29A',
+                            gold: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        rochester: ['Rochester', 'cursive'],
+                        baskerville: ['Libre Baskerville', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-bordo: #891638;
+            --color-coral: #ED6079;
+            --color-soft-pink: #FDB1BB;
+            --color-floral: #FDF4EF;
+            --color-teal: #41A29A;
+            --color-gold: #D4AF37;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-floral);
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        /* Arch Shape Elements based on Brand Book */
+        .arch-card {
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+
+        .arch-frame {
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+        }
+
+        /* Elegant Frame Borders */
+        .gold-border-frame {
+            border: 2px solid #D4AF37;
+            outline: 4px solid #891638;
+            outline-offset: 4px;
+        }
+
+        .coral-gradient {
+            background: linear-gradient(135deg, #891638 0%, #ED6079 50%, #FDB1BB 100%);
+        }
+
+        .soft-gradient {
+            background: linear-gradient(180deg, #FDF4EF 0%, #FFF5F7 100%);
+        }
+
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF4EF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #891638;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ED6079;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#FDF4EF]/90 backdrop-blur-md transition-all duration-300 border-b border-brand-softPink/30 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-brand-bordo flex items-center justify-center text-white shadow-md border-2 border-brand-gold group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-droplet text-brand-softPink text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-rochester text-2xl text-brand-bordo leading-none font-bold tracking-wide">Gusteau's</span>
+                    <span class="font-montserrat text-[9px] tracking-widest text-brand-coral uppercase font-semibold">Professional Kitchen</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm tracking-wide">
+                <a href="#home" class="text-brand-bordo hover:text-brand-coral transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-coral hover:after:w-full after:transition-all">Inicio</a>
+                <a href="#quienes-somos" class="text-brand-bordo hover:text-brand-coral transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-coral hover:after:w-full after:transition-all">Quiénes Somos</a>
+                <a href="#productos" class="text-brand-bordo hover:text-brand-coral transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-coral hover:after:w-full after:transition-all">Productos</a>
+                <a href="#galeria" class="text-brand-bordo hover:text-brand-coral transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-coral hover:after:w-full after:transition-all">Galería</a>
+                <a href="#contacto" class="text-brand-bordo hover:text-brand-coral transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-coral hover:after:w-full after:transition-all">Contacto</a>
+            </nav>
+
+            <!-- CTA Button Navbar -->
+            <div class="hidden md:block">
+                <a href="#productos" class="bg-brand-bordo hover:bg-brand-coral text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                    <span>Catálogo</span>
+                    <i class="fa-solid fa-store text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-brand-bordo focus:outline-none p-2" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Nav -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#FDF4EF] border-b border-brand-softPink/40 px-6 pt-4 pb-6 space-y-4 shadow-lg">
+            <a href="#home" class="mobile-nav-link block font-medium text-brand-bordo hover:text-brand-coral py-2 border-b border-brand-softPink/20">Inicio</a>
+            <a href="#quienes-somos" class="mobile-nav-link block font-medium text-brand-bordo hover:text-brand-coral py-2 border-b border-brand-softPink/20">Quiénes Somos</a>
+            <a href="#productos" class="mobile-nav-link block font-medium text-brand-bordo hover:text-brand-coral py-2 border-b border-brand-softPink/20">Productos</a>
+            <a href="#galeria" class="mobile-nav-link block font-medium text-brand-bordo hover:text-brand-coral py-2 border-b border-brand-softPink/20">Galería</a>
+            <a href="#contacto" class="mobile-nav-link block font-medium text-brand-bordo hover:text-brand-coral py-2">Contacto</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden relative soft-gradient">
+        <!-- Subtle Decorative Background Patterns -->
+        <div class="absolute top-10 left-5 w-64 h-64 bg-brand-softPink/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-5 w-80 h-80 bg-brand-coral/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-softPink/30 border border-brand-coral/30 text-brand-bordo font-medium text-xs tracking-wider uppercase">
+                        <i class="fa-solid fa-star text-brand-gold text-xs"></i>
+                        <span>Repostería Profesional en tu Hogar</span>
+                        <i class="fa-solid fa-star text-brand-gold text-xs"></i>
+                    </div>
+
+                    <h1 class="font-baskerville text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-bordo leading-tight">
+                        De la ciencia del sabor a la <span class="font-rochester text-brand-coral font-normal text-5xl sm:text-6xl lg:text-7xl block md:inline">repostería para todos.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-700 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Soluciones gastronómicas de alta calidad profesional formuladas para brindar practicidad, sabor excepcional y máxima resistencia al calor en tus preparaciones.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#productos" class="w-full sm:w-auto px-8 py-3.5 bg-brand-bordo hover:bg-brand-coral text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center gap-3 group">
+                            <span>Ver Nuestros Productos</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#quienes-somos" class="w-full sm:w-auto px-8 py-3.5 border-2 border-brand-bordo text-brand-bordo hover:bg-brand-bordo hover:text-white font-semibold rounded-full transition-all duration-300 text-center">
+                            Conocer Nuestra Historia
+                        </a>
+                    </div>
+
+                    <!-- Highlights Badge Bar -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-brand-softPink/40">
+                        <div class="text-center lg:text-left">
+                            <span class="block font-baskerville font-bold text-2xl text-brand-bordo">+10,000</span>
+                            <span class="text-xs text-gray-600 font-medium">Reposteros Felices</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-baskerville font-bold text-2xl text-brand-bordo">100%</span>
+                            <span class="text-xs text-gray-600 font-medium">Apto Horneado</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-baskerville font-bold text-2xl text-brand-bordo">Sin Gluten</span>
+                            <span class="text-xs text-gray-600 font-medium">Opciones Celiacas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arch Visual Card Frame Column -->
+                <div class="lg:col-span-5 flex justify-center reveal">
+                    <div class="relative w-full max-w-md">
+                        <!-- Background Frame Arch -->
+                        <div class="arch-card bg-gradient-to-b from-brand-bordo to-brand-coral p-3 shadow-2xl relative border-4 border-brand-gold/60">
+                            <div class="arch-card overflow-hidden bg-white relative">
+                                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Gusteau's Products Banner" 
+                                     class="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-bordo/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                                    <div class="flex items-center gap-1 text-brand-gold text-xs mb-1">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="font-rochester text-3xl font-bold">Gusteau's</span>
+                                    <p class="text-xs text-brand-floralWhite/90">Fórmula exclusiva de sabor y practicidad</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Accent Ornament -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-brand-softPink hidden sm:flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-softPink/40 flex items-center justify-center text-brand-bordo">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div>
+                                <span class="block font-bold text-xs text-brand-bordo">Línea Cake Mix & Emulsiones</span>
+                                <span class="text-[10px] text-gray-500">Listos en minutos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS SECTION -->
+    <section id="quienes-somos" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="font-rochester text-3xl text-brand-coral">Nuestra Esencia</span>
+                <h2 class="font-baskerville text-3xl sm:text-4xl font-bold text-brand-bordo mt-1">Historia y Origen</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Story Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+                <!-- Image Arch -->
+                <div class="lg:col-span-5 flex justify-center reveal">
+                    <div class="relative w-full max-w-sm">
+                        <div class="arch-card overflow-hidden shadow-xl border-4 border-brand-coral/20 bg-brand-floralWhite p-2">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Pastelería y elaboración" 
+                                 class="arch-card w-full h-[400px] object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-brand-softPink/30 rounded-full -z-10"></div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-gray-700 leading-relaxed reveal">
+                    <p class="text-lg font-medium text-brand-bordo italic border-l-4 border-brand-coral pl-4">
+                        "Inspirado en la alta pastelería francesa y la premisa central de que 'cualquiera puede cocinar', rindiendo homenaje al amor por la cocina."
+                    </p>
+                    <p class="text-justify">
+                        <strong class="text-brand-bordo">Gusteau’s Professional Kitchen</strong> nace de una pasión familiar por el sabor, la innovación y la excelencia. Sus raíces se encuentran en Compañía de Sabor, fundada en 2006 y especializada en el desarrollo de esencias y perfiles aromáticos para la industria repostera.
+                    </p>
+                    <p class="text-justify">
+                        En 2019, Carolina y Maximiliano dieron vida a Gusteau’s Professional Kitchen con el propósito de desarrollar diversas soluciones de calidad profesional producidas localmente. Así es como nacieron las <strong>Emulsiones Gusteau’s</strong>, formuladas para brindar practicidad, sabor y resistencia al calor.
+                    </p>
+                    <p class="text-justify">
+                        Con el paso de los años, ampliamos nuestro catálogo con bizcochuelos en taza (<strong>Mug Cake Mix®</strong>), mezclas para bizcochuelos y alianzas estratégicas, continuando la expansión con una visión clara: llevar la ciencia del sabor a todos los hogares.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mission / Vision / Objectives Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Misión -->
+                <div class="arch-card bg-brand-floralWhite p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-softPink/50 reveal group">
+                    <div class="w-16 h-16 rounded-full bg-brand-coral/20 text-brand-bordo flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 group-hover:bg-brand-bordo group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-baskerville text-xl font-bold text-brand-bordo mb-4">MISIÓN</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Desarrollar y ofrecer productos alimenticios de repostería que combinen calidad, practicidad e innovación, facilitando el proceso de elaboración sin resignar sabor.
+                    </p>
+                </div>
+
+                <!-- Card 2: Visión -->
+                <div class="arch-card bg-brand-floralWhite p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-softPink/50 reveal group" style="transition-delay: 150ms;">
+                    <div class="w-16 h-16 rounded-full bg-brand-coral/20 text-brand-bordo flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 group-hover:bg-brand-bordo group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-baskerville text-xl font-bold text-brand-bordo mb-4">VISIÓN</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Ser una marca referente en el desarrollo de productos para repostería, reconocida por la calidad e innovación de nuestras propuestas tanto local como internacionalmente.
+                    </p>
+                </div>
+
+                <!-- Card 3: Objetivos -->
+                <div class="arch-card bg-brand-floralWhite p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-softPink/50 reveal group" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 rounded-full bg-brand-coral/20 text-brand-bordo flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 group-hover:bg-brand-bordo group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-baskerville text-xl font-bold text-brand-bordo mb-4">VALORES</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Calidad garantizada, accesibilidad, innovación constante en perfiles aromáticos y cercanía auténtica con nuestros consumidores.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS SECTION -->
+    <section id="productos" class="py-20 soft-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <span class="font-rochester text-3xl text-brand-coral">Sabor Profesional</span>
+                <h2 class="font-baskerville text-3xl sm:text-4xl font-bold text-brand-bordo mt-1">Nuestros Productos</h2>
+                <p class="text-gray-600 text-sm mt-3">Selecciona una categoría para explorar nuestra variedad de soluciones reposteras</p>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Main Filter Categories -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-8 reveal">
+                <button onclick="filterProducts('all')" class="filter-btn active-filter px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm" data-category="all">
+                    Todos
+                </button>
+                <button onclick="filterProducts('premezclas')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-brand-bordo hover:bg-brand-softPink/40 transition-all duration-300 shadow-sm border border-brand-softPink" data-category="premezclas">
+                    Premezclas
+                </button>
+                <button onclick="filterProducts('esencias')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-brand-bordo hover:bg-brand-softPink/40 transition-all duration-300 shadow-sm border border-brand-softPink" data-category="esencias">
+                    Esencias
+                </button>
+                <button onclick="filterProducts('emulsiones')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-brand-bordo hover:bg-brand-softPink/40 transition-all duration-300 shadow-sm border border-brand-softPink" data-category="emulsiones">
+                    Emulsiones
+                </button>
+            </div>
+
+            <!-- Sub-filters for Premezclas (Shown dynamically) -->
+            <div id="sub-filter-container" class="hidden flex flex-wrap items-center justify-center gap-2 mb-12 animate-fadeIn">
+                <span class="text-xs font-semibold text-brand-bordo uppercase tracking-wider mr-2">Subcategoría:</span>
+                <button onclick="filterSubCategory('all-sub')" class="sub-filter-btn active-sub px-4 py-1.5 rounded-full text-xs font-medium bg-brand-bordo text-white" data-sub="all-sub">
+                    Todas las Premezclas
+                </button>
+                <button onclick="filterSubCategory('cake-mix')" class="sub-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 hover:bg-brand-softPink/30 border border-gray-200" data-sub="cake-mix">
+                    Cake Mix
+                </button>
+                <button onclick="filterSubCategory('mug-cake')" class="sub-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 hover:bg-brand-softPink/30 border border-gray-200" data-sub="mug-cake">
+                    Mug Cake Mix®
+                </button>
+                <button onclick="filterSubCategory('otros')" class="sub-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 hover:bg-brand-softPink/30 border border-gray-200" data-sub="otros">
+                    Otros Especiales
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products will be dynamically populated via Javascript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA SECTION -->
+    <section id="galeria" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="font-rochester text-3xl text-brand-coral">Presencia y Trayectoria</span>
+                <h2 class="font-baskerville text-3xl sm:text-4xl font-bold text-brand-bordo mt-1">Dónde Estuvimos</h2>
+                <p class="text-gray-600 text-sm mt-2">Nuestra participación en ferias, exposiciones y eventos gastronómicos de la industria</p>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="arch-card overflow-hidden shadow-lg group relative cursor-pointer border border-brand-softPink/30 reveal">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" 
+                         alt="ExpoCelíaca" 
+                         class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-bordo/90 via-brand-bordo/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+                        <span class="text-xs text-brand-softPink font-semibold uppercase tracking-wider">Buenos Aires</span>
+                        <h3 class="font-baskerville text-xl font-bold">ExpoCelíaca 2026</h3>
+                        <p class="text-xs text-gray-200 mt-1">Presentación de toda la línea de premezclas e innovación libre de gluten.</p>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="arch-card overflow-hidden shadow-lg group relative cursor-pointer border border-brand-softPink/30 reveal" style="transition-delay: 150ms;">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" 
+                         alt="Carrefour Expo" 
+                         class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-bordo/90 via-brand-bordo/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+                        <span class="text-xs text-brand-softPink font-semibold uppercase tracking-wider">Alianza Comercial</span>
+                        <h3 class="font-baskerville text-xl font-bold">Carrefour Expo</h3>
+                        <p class="text-xs text-gray-200 mt-1">Lanzamiento de alianzas y expansión en grandes cadenas comerciales.</p>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="arch-card overflow-hidden shadow-lg group relative cursor-pointer border border-brand-softPink/30 reveal" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80" 
+                         alt="Feria de Repostería" 
+                         class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-bordo/90 via-brand-bordo/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+                        <span class="text-xs text-brand-softPink font-semibold uppercase tracking-wider">Internacional</span>
+                        <h3 class="font-baskerville text-xl font-bold">Feria Internacional de Repostería</h3>
+                        <p class="text-xs text-gray-200 mt-1">Demostraciones en vivo de nuestras emulsiones resistentes a altas temperaturas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO & FOOTER SECTION -->
+    <section id="contacto" class="py-20 soft-gradient relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="arch-card bg-gradient-to-br from-brand-bordo via-brand-bordo to-brand-coral p-8 sm:p-14 text-white shadow-2xl border-4 border-brand-gold/40 relative reveal">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <span class="font-rochester text-3xl text-brand-softPink">Estamos en contacto</span>
+                        <h2 class="font-baskerville text-3xl sm:text-4xl font-bold">¿Querés sumar Gusteau's a tu negocio o realizar una consulta?</h2>
+                        <p class="text-brand-floralWhite/90 text-sm leading-relaxed max-w-xl">
+                            Escribinos a nuestro correo electrónico directo o seguinos en nuestras redes sociales para enterarte de novedades, recetas e información comercial.
+                        </p>
+
+                        <!-- Contact Action Buttons -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <!-- Instagram Button -->
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 hover:opacity-95 text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                                <span>Seguinos en Instagram</span>
+                            </a>
+
+                            <!-- Mail Button -->
+                            <a href="mailto:contacto@gusteaus.com" class="w-full sm:w-auto px-6 py-3.5 bg-white text-brand-bordo hover:bg-brand-floralWhite font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3">
+                                <i class="fa-regular fa-envelope text-xl"></i>
+                                <span>Enviar Email</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 space-y-4">
+                            <div class="flex items-center gap-4 p-3 bg-white/10 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-brand-gold/30 flex items-center justify-center text-brand-gold">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] text-brand-softPink uppercase tracking-wider font-semibold">Correo Electrónico</span>
+                                    <a href="mailto:contacto@gusteaus.com" class="text-sm font-medium hover:underline">contacto@gusteaus.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 bg-white/10 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-brand-gold/30 flex items-center justify-center text-brand-gold">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] text-brand-softPink uppercase tracking-wider font-semibold">Instagram Oficial</span>
+                                    <span class="text-sm font-medium">@gusteaus_oficial</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 bg-white/10 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-brand-gold/30 flex items-center justify-center text-brand-gold">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] text-brand-softPink uppercase tracking-wider font-semibold">Origen</span>
+                                    <span class="text-sm font-medium">Argentina & Proyección Internacional</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-bordo text-white py-10 border-t border-brand-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-softPink">
+                    <i class="fa-solid fa-droplet text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-rochester text-2xl font-bold">Gusteau's</span>
+                    <p class="text-[10px] text-brand-softPink tracking-widest uppercase">Professional Kitchen</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-brand-floralWhite/80 text-center">
+                © <span id="current-year"></span> Gusteau's Professional Kitchen. Todos los derechos reservados.
+            </p>
+
+            <div class="flex space-x-4 text-brand-softPink">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="mailto:contacto@gusteaus.com" class="hover:text-white transition-colors"><i class="fa-regular fa-envelope text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Sample Product Dataset
+        const products = [
+            // Premezclas - Cake Mix
+            {
+                id: 1,
+                title: "Cake Mix Vainilla",
+                category: "premezclas",
+                subCategory: "cake-mix",
+                badge: "Cake Mix",
+                image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80",
+                description: "Premezcla para bizcochuelo sabor Vainilla tradicional. Esponjoso y de miga húmeda.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 2,
+                title: "Cake Mix Red Velvet",
+                category: "premezclas",
+                subCategory: "cake-mix",
+                badge: "Cake Mix",
+                image: "https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=600&q=80",
+                description: "Clásica preparación Red Velvet con el distintivo tono y textura aterciopelada.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 3,
+                title: "Cake Mix Chocolate",
+                category: "premezclas",
+                subCategory: "cake-mix",
+                badge: "Cake Mix",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+                description: "Sabor intenso a cacao seleccionado. Ideal para tartas estructuradas y capas.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 4,
+                title: "Cake Mix Limón",
+                category: "premezclas",
+                subCategory: "cake-mix",
+                badge: "Cake Mix",
+                image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80",
+                description: "Frescura cítrica equilibrada con la humedad perfecta para budines.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            // Premezclas - Mug Cake
+            {
+                id: 5,
+                title: "Mug Cake Chocolate",
+                category: "premezclas",
+                subCategory: "mug-cake",
+                badge: "Mug Cake Mix®",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+                description: "Bizcochuelo en taza listo en 1:30 min al microondas. Agregás leche y disfrutás.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 6,
+                title: "Mug Cake Red Velvet",
+                category: "premezclas",
+                subCategory: "mug-cake",
+                badge: "Mug Cake Mix®",
+                image: "https://images.unsplash.com/photo-1586788224331-947f68671cf1?auto=format&fit=crop&w=600&q=80",
+                description: "Taza gourmet individual Red Velvet de preparación instantánea.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 7,
+                title: "Mug Cake Ananá",
+                category: "premezclas",
+                subCategory: "mug-cake",
+                badge: "Mug Cake Mix®",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+                description: "Variedad tropical dulce de ananá para disfrutar un antojo express.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            // Premezclas - Otros
+            {
+                id: 8,
+                title: "Premezcla Cookies & Scones",
+                category: "premezclas",
+                subCategory: "otros",
+                badge: "Especiales",
+                image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
+                description: "Solución versátil para galletas horneadas crocantes por fuera y suaves por dentro.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            // Esencias
+            {
+                id: 9,
+                title: "Esencia de Frutilla Concentrada",
+                category: "esencias",
+                subCategory: "",
+                badge: "Esencia",
+                image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80",
+                description: "Perfume y perfil aromático intenso para rellenos, cremas y coberturas.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 10,
+                title: "Esencia de Almendras",
+                category: "esencias",
+                subCategory: "",
+                badge: "Esencia",
+                image: "https://images.unsplash.com/photo-1508061252966-17385f2489b4?auto=format&fit=crop&w=600&q=80",
+                description: "Aroma clásico y elegante refinado ideal para roscas y panificados.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            // Emulsiones
+            {
+                id: 11,
+                title: "Emulsión de Vainilla",
+                category: "emulsiones",
+                subCategory: "",
+                badge: "Emulsión",
+                image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80",
+                description: "Sabor horneable ultra resistente a altas temperaturas. No pierde potencia.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            },
+            {
+                id: 12,
+                title: "Emulsión Dulce de Leche",
+                category: "emulsiones",
+                subCategory: "",
+                badge: "Emulsión",
+                image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80",
+                description: "Aroma y sabor concentrado a auténtico dulce de leche para masas y bizcochos.",
+                mlLink: "https://www.mercadolibre.com.ar"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentSubCategory = 'all-sub';
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filtered = products.filter(p => {
+                const matchCat = (currentCategory === 'all') || (p.category === currentCategory);
+                const matchSub = (currentCategory !== 'premezclas') || (currentSubCategory === 'all-sub') || (p.subCategory === currentSubCategory);
+                return matchCat && matchSub;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <i class="fa-solid fa-cookie-bite text-4xl text-brand-softPink mb-3"></i>
+                        <p class="font-medium">No se encontraron productos en esta categoría.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "arch-card bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-brand-softPink/40 flex flex-col justify-between overflow-hidden group";
+                
+                card.innerHTML = `
+                    <div>
+                        <!-- Arch Image Container -->
+                        <div class="arch-frame overflow-hidden bg-brand-floralWhite relative h-52">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-brand-bordo text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                                ${p.badge}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-baskerville font-bold text-lg text-brand-bordo group-hover:text-brand-coral transition-colors">${p.title}</h3>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">${p.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <a href="${p.mlLink}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold text-xs rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm">
+                            <span>Comprar en Mercado Libre</span>
+                            <i class="fa-solid fa-bag-shopping text-xs"></i>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter Function
+        function filterProducts(category) {
+            currentCategory = category;
+            currentSubCategory = 'all-sub';
+
+            // Active button styles update
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.className = "filter-btn active-filter px-6 py-2.5 rounded-full text-sm font-semibold bg-brand-bordo text-white shadow-md";
+                } else {
+                    btn.className = "filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-white text-brand-bordo hover:bg-brand-softPink/40 transition-all duration-300 shadow-sm border border-brand-softPink";
+                }
+            });
+
+            // Toggle sub-filter visibility
+            const subContainer = document.getElementById('sub-filter-container');
+            if (category === 'premezclas') {
+                subContainer.classList.remove('hidden');
+            } else {
+                subContainer.classList.add('hidden');
+            }
+
+            renderProducts();
+        }
+
+        // Subcategory Filter Function
+        function filterSubCategory(sub) {
+            currentSubCategory = sub;
+            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
+                if (btn.dataset.sub === sub) {
+                    btn.className = "sub-filter-btn active-sub px-4 py-1.5 rounded-full text-xs font-medium bg-brand-bordo text-white";
+                } else {
+                    btn.className = "sub-filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 hover:bg-brand-softPink/30 border border-gray-200";
+                }
+            });
+            renderProducts();
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // Set Current Year in Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Initial Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
