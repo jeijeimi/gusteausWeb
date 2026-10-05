@@ -21,10 +21,12 @@ export default function Productos() {
           <div className="productos-container">
             <div className="productos-item">
               <img src="/assets/img/productos/CakeMixChoco.png" alt="Misión" />
-              <h3>MISIÓN</h3>
-              <p>
-                Desarrollar productos de repostería que combinen calidad, practicidad e innovación, facilitando la elaboración de preparaciones ricas y accesibles para hogares y profesionales, sin resignar sabor.
-              </p>
+              <div>
+                <h3>MISIÓN</h3>
+                <p>
+                  Desarrollar productos de repostería que combinen calidad, practicidad e innovación, facilitando la elaboración de preparaciones ricas y accesibles para hogares y profesionales, sin resignar sabor.
+                </p>
+              </div>
             </div>
             <div className="productos-item">
               <img src="/assets/img/productos/CakeMixLimon.png" alt="Visión" />
