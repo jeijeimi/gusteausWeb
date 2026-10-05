@@ -1,6 +1,6 @@
 'use client';
 
-export default function QuienesSomos() {
+export default function About() {
   return (
     <section id="quienes-somos" className="quienes-somos-section">
       <div className="container">
@@ -19,8 +19,6 @@ export default function QuienesSomos() {
           {/* Left Column - Image */}
           <div className="col-lg-6 col-md-12 position-relative">
             <div className="image-container">
-              {/* Decorative circles */}
-              
               {/* Main image */}
               <img
                 src="/assets/img/nosotrosExpo/maskNosotros.png"
@@ -44,7 +42,7 @@ export default function QuienesSomos() {
               {/* Body text */}
               <div className="body-text">
                 <p>
-                  <strong className="highlight-text">Gusteau's Professional Kitchen</strong> nació con la visión de revolucionar la pastelería, fusionando la tradición artesanal con la innovación moderna.
+                  <strong className="highlight-text">Gusteau&apos;s Professional Kitchen</strong> nació con la visión de revolucionar la pastelería, fusionando la tradición artesanal con la innovación moderna.
                 </p>
                 <p>
                   Desde nuestros inicios, nos hemos dedicado a desarrollar productos de alta calidad que faciliten el trabajo de los profesionales y entusiastas de la repostería, sin sacrificar el sabor ni la presentación.

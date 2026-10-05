@@ -1,19 +1,21 @@
-import Galeria from '@/components/Galeria';
+import About from '@/components/About';
+import Contact from '@/components/Contact';
+import Gallery from '@/components/Gallery';
 import Header from '@/components/Header';
-import Home from '@/components/Home';
-import Productos from '@/components/Productos';
-import QuienesSomos from '@/components/QuienesSomos';
-import Valores from '@/components/Valores';
+import Hero from '@/components/Hero';
+import Products from '@/components/Products';
+import Values from '@/components/Values';
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <Home />
-      <QuienesSomos />
-      <Valores />
-      <Galeria />
-      <Productos  />
+      <Hero />
+      <About />
+      <Values />
+      <Gallery />
+      <Products />
+      <Contact />
     </>
   );
 }

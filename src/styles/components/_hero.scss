@@ -1,0 +1,101 @@
+@use "../abstracts" as *;
+
+/* Home Section */
+.home-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
+}
+
+.home-title {
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-title-baskerville {
+  font-family: var(--font-baskerville);
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.home-title-rochester {
+  font-family: var(--font-rochester);
+  font-size: 70px;
+  font-weight: normal;
+}
+
+.home-subtitle {
+  font-family: var(--font-montserrat);
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.home-button {
+  background-color: var(--color-coral);
+  border: none;
+  color: white;
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-coral-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(237, 96, 121, 0.4);
+  }
+}
+
+@include respond(mobile) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .home-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}

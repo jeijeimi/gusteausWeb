@@ -1,6 +1,6 @@
 'use client';
 
-export default function Valores() {
+export default function Values() {
   return (
     <section id="valores" className="valores-section">
       <div className="container">

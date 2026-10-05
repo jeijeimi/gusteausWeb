@@ -1,0 +1,76 @@
+@use "../abstracts" as *;
+
+/* Fuentes */
+@font-face {
+  font-family: 'Rochester';
+  src: url('/assets/fonts/Rochester-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-rochester: 'Rochester', cursive;
+  --font-baskerville: 'Libre Baskerville', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+/* Variables de colores */
+:root {
+  --color-bordo: #{$color-bordo};
+  --color-coral: #{$color-coral};
+}
+
+/* Global */
+body {
+  font-family: var(--font-montserrat);
+}
+
+/* Títulos de sección */
+.section-title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.title-script {
+  display: block;
+  font-family: var(--font-rochester);
+  font-size: 2.2rem;
+  color: $color-pink-light;
+}
+
+.title-serif {
+  display: block;
+  font-family: var(--font-baskerville);
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-wine;
+  margin-bottom: 0.5rem;
+}
+
+.title-underline {
+  width: 80px;
+  height: 3px;
+  background-color: $color-gold;
+  margin: 0.5rem auto 0;
+}
+
+@include respond(mobile) {
+  .title-script {
+    font-size: 1.5rem;
+  }
+
+  .title-serif {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .title-script {
+    font-size: 1.3rem;
+  }
+
+  .title-serif {
+    font-size: 1.8rem;
+  }
+}
