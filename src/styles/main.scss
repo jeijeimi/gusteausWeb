@@ -7,10 +7,10 @@
 @use "base/typography";
 
 // Componentes
-@use "../components/Header/header";
-@use "../components/Hero/hero";
-@use "../components/About/about";
-@use "../components/Values/values";
-@use "../components/Gallery/gallery";
-@use "../components/Products/products";
-@use "../components/Contact/contact";
+@use "components/header";
+@use "components/hero";
+@use "components/about";
+@use "components/values";
+@use "components/gallery";
+@use "components/products";
+@use "components/contact";

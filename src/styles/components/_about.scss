@@ -1,4 +1,4 @@
-@use "../../styles/abstracts" as *;
+@use "../abstracts" as *;
 
 /* Quienes Somos Section */
 .quienes-somos-section {
@@ -26,11 +26,6 @@
   object-fit: contain;
 }
 
-.decorative-circle {
-  position: absolute;
-  border-radius: 50%;
-  z-index: 0;
-}
 
 .content-container {
   padding: 40px 20px;
@@ -143,9 +138,5 @@
 
   .hearts-container {
     width: 50px;
-  }
-
-  .decorative-circle {
-    transform: scale(0.8);
   }
 }
