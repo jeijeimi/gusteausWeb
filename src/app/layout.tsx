@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Montserrat } from "next/font/google";
+import { Italianno, Libre_Baskerville, Montserrat, Playfair_Display } from "next/font/google";
 import "@/styles/main.scss";
 
 const libreBaskerville = Libre_Baskerville({
@@ -15,6 +15,18 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
+const italianno = Italianno({
+  weight: '400',
+  subsets: ["latin"],
+  variable: "--font-italianno",
+});
+
+const playfair = Playfair_Display({
+  weight: ['700'],
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
+
 export const metadata: Metadata = {
   title: "Gusteau's Professional Kitchen",
   description: "Fabricantes de sabores para la pastelería",
@@ -22,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${libreBaskerville.variable} ${montserrat.variable}`}>
+    <html lang="es" className={`${libreBaskerville.variable} ${montserrat.variable} ${italianno.variable} ${playfair.variable}`}>
       <body>{children}</body>
     </html>
   );
