@@ -1,1 +1,279 @@
+@use "../abstracts" as *;
+
 /* Productos Section */
+.productos-section {
+  background-color: $color-floral;
+  padding: 64px 0;
+
+  @include respond(desktop) {
+    padding: 100px 0;
+  }
+}
+
+.productos-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include respond(desktop) {
+    padding: 0 32px;
+  }
+}
+
+.productos-title {
+  font-family: var(--font-rochester);
+  color: $color-bordo;
+  font-size: 2.75rem;
+  text-align: center;
+  margin-bottom: 12px;
+
+  @include respond(desktop) {
+    font-size: 3.5rem;
+  }
+}
+
+.productos-intro {
+  font-family: var(--font-montserrat);
+  color: $color-text;
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 0 auto 28px;
+  max-width: 640px;
+}
+
+// Focus visible compartido
+%foco-visible {
+  &:focus-visible {
+    outline: 3px solid $color-gold;
+    outline-offset: 2px;
+  }
+}
+
+/* Botonera */
+.productos-filtros {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px;
+  margin-bottom: 12px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  &--sub .productos-filtro {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+}
+
+.productos-filtro {
+  @extend %foco-visible;
+  flex: 0 0 auto;
+  font-family: var(--font-montserrat);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $color-bordo;
+  background-color: transparent;
+  border: 2px solid $color-coral;
+  border-radius: 999px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($color-coral, 0.12);
+  }
+
+  &[aria-pressed="true"] {
+    background-color: $color-coral;
+    color: #fff;
+  }
+}
+
+.productos-resultados {
+  font-family: var(--font-montserrat);
+  font-size: 0.85rem;
+  color: $color-text;
+  text-align: center;
+  margin: 8px 0 24px;
+}
+
+/* Grilla */
+.productos-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  @include respond(tablet-portrait) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(tablet-landscape) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+.productos-grid__item {
+  display: flex;
+  animation: producto-entrada 0.35s ease-out both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes producto-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Tarjeta */
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba($color-wine, 0.08);
+
+  &__img {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background-color: $color-cream;
+
+    img {
+      object-fit: contain;
+      padding: 16px;
+    }
+
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-pink-light;
+      color: $color-bordo;
+      font-family: var(--font-montserrat);
+      font-size: 0.85rem;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+    padding: 16px 18px 20px;
+  }
+
+  &__title {
+    font-family: var(--font-baskerville);
+    color: $color-bordo;
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: var(--font-montserrat);
+    color: $color-text;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  &__tacc {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-montserrat);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $color-wine;
+    background-color: rgba($color-gold, 0.18);
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+
+  &__sabores {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__chip {
+    font-family: var(--font-montserrat);
+    font-size: 0.75rem;
+    color: $color-bordo;
+    background-color: $color-floral;
+    border: 1px solid $color-pink-light;
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  &__toggle {
+    @extend %foco-visible;
+    font-family: var(--font-montserrat);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $color-coral-dark;
+    background: none;
+    border: 0;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__btn {
+    @extend %foco-visible;
+    margin-top: auto;
+    align-self: stretch;
+    text-align: center;
+    font-family: var(--font-montserrat);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: $color-coral;
+    border-radius: 999px;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $color-coral-dark;
+      color: #fff;
+    }
+
+    & + & {
+      margin-top: 8px;
+    }
+  }
+}
