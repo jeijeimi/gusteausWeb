@@ -1,6 +1,6 @@
 'use client';
 
-export default function Home() {
+export default function Hero() {
   return (
     <section id="home" className="home-section">
       <div className="video-background">

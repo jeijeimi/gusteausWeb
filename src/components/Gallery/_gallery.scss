@@ -1,0 +1,61 @@
+@use "../../styles/abstracts" as *;
+
+/* Galeria Section */
+.galeria-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0;
+  background: linear-gradient(129deg, rgba(254, 119, 141, 1) 0%, rgba(128, 0, 51, 1) 32%, rgba(128, 0, 51, 1) 72%, rgba(254, 119, 141, 1) 100%);
+
+  .title-script {
+    display: block;
+    font-family: var(--font-rochester);
+    font-size: 2.2rem;
+    color: $color-pink-light;
+    margin-bottom: 0rem;
+  }
+
+  .title-serif {
+    display: block;
+    font-family: var(--font-baskerville);
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .title-underline {
+    width: 80px;
+    height: 3px;
+    background-color: $color-gold;
+    margin: 0.5rem auto 0;
+  }
+
+  .galeria-container {
+    display: flex;
+
+    .galeria-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 30%;
+      margin: 30px;
+
+      img {
+        width: 15rem;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-family: var(--font-montserrat);
+        color: white;
+        line-height: 1.6;
+        font-size: smaller;
+        text-align: center;
+      }
+    }
+  }
+}

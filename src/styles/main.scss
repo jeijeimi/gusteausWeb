@@ -1,0 +1,16 @@
+// Abstracts (sin salida CSS)
+@use "abstracts";
+
+// Base
+@use "base/reset";
+@use "vendor/bootstrap";
+@use "base/typography";
+
+// Componentes
+@use "../components/Header/header";
+@use "../components/Hero/hero";
+@use "../components/About/about";
+@use "../components/Values/values";
+@use "../components/Gallery/gallery";
+@use "../components/Products/products";
+@use "../components/Contact/contact";

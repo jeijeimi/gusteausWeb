@@ -1,0 +1,20 @@
+// Colores de marca
+$color-bordo: #891638;
+$color-coral: #ED6079;
+$color-coral-dark: #D44A65;
+$color-soft-pink: #FDB1BB;
+$color-floral: #FDF4EF;
+$color-teal: #41A29A;
+$color-gold: #D4AF37;
+$color-pink-light: #F4B9C9;
+$color-wine: #8B2640;
+$color-cream: #fdf9f7;
+$color-text: #333333;
+
+// Breakpoints
+$breakpoints: (
+  mobile: (max: 767.98px),
+  tablet-portrait: (min: 768px, max: 1023.98px),
+  tablet-landscape: (min: 1024px, max: 1279.98px),
+  desktop: (min: 1280px),
+);

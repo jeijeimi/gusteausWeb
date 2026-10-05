@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "variables" as *;
+
+// Uso: @include respond(mobile) { ... }
+@mixin respond($name) {
+  $bp: map.get($breakpoints, $name);
+
+  @if not $bp {
+    @error "Breakpoint desconocido: #{$name}";
+  }
+
+  $min: map.get($bp, min);
+  $max: map.get($bp, max);
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) { @content; }
+  } @else if $min {
+    @media (min-width: $min) { @content; }
+  } @else {
+    @media (max-width: $max) { @content; }
+  }
+}

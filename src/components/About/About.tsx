@@ -1,6 +1,6 @@
 'use client';
 
-export default function QuienesSomos() {
+export default function About() {
   return (
     <section id="quienes-somos" className="quienes-somos-section">
       <div className="container">

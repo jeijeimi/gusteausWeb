@@ -1,6 +1,6 @@
 'use client';
 
-export default function Galeria() {
+export default function Gallery() {
   return (
     <section id="galeria" className="galeria-section">
       <div className="container">

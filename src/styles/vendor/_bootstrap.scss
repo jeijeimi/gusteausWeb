@@ -1,0 +1,22 @@
+// Solo los módulos de Bootstrap que usa el sitio
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/helpers";
+
+// Utilidades usadas: d-*, justify-content-*, align-items-*, text-center, ms-auto, position-relative
+$utilities: map-get-multiple(
+  $utilities,
+  ("display", "justify-content", "align-items", "text-align", "margin-start", "position")
+);
+
+@import "bootstrap/scss/utilities/api";
