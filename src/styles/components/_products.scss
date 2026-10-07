@@ -29,6 +29,16 @@
 }
 
 .productos-section {
+  --shelf-sink: 10px;
+
+  @include respond(tablet-portrait) {
+    --shelf-sink: 12px;
+  }
+
+  @media (min-width: 1024px) {
+    --shelf-sink: 16px;
+  }
+
   container-type: inline-size;
   padding-top: 64px;
   background: repeating-linear-gradient(
@@ -179,6 +189,9 @@
 
   &--img {
     box-shadow: none;
+    border-radius: 0;
+    background: none;
+    padding: 0;
 
     &::before {
       content: none;
@@ -230,17 +243,18 @@
     border: 0;
     background: none;
     cursor: pointer;
+    transform: translateY(var(--shelf-sink));
     transition: transform 0.2s ease;
 
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(calc(var(--shelf-sink) - 4px));
     }
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
 
       &:hover {
-        transform: none;
+        transform: translateY(var(--shelf-sink));
       }
     }
   }
@@ -278,6 +292,7 @@
     .envase {
       position: relative;
       z-index: 1;
+      transform: translateY(var(--shelf-sink));
     }
   }
 
@@ -292,6 +307,10 @@
       flex: 0 0 230px;
       width: 230px;
       margin: 0;
+
+      .envase {
+        transform: none;
+      }
 
       .estante__tabla-wrap {
         display: none;

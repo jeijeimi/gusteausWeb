@@ -95,6 +95,8 @@ const slug = (texto: string) =>
 interface Grupo {
   categoria: CategoriaId;
   sub: SubId;
+  /** Prefijo del id generado; por defecto usa `sub`. */
+  prefijoId?: string;
   estante: Estante;
   l1: string;
   extra: string;
@@ -106,15 +108,20 @@ interface ItemGrupo {
   bg?: string;
   ink?: string;
   extra?: string;
+  conImagen?: boolean;
+  /** Ruta de imagen explícita (anula la ruta generada). */
+  imagen?: string;
 }
 
 function crear(grupo: Grupo, items: ItemGrupo[]): Producto[] {
-  const { descripcion, ...base } = grupo;
-  return items.map(({ l2, bg, ink, extra }) => {
+  const { descripcion, prefijoId = grupo.sub, ...base } = grupo;
+  return items.map(({ l2, bg, ink, extra, conImagen, imagen }) => {
+    const id = `${prefijoId}-${slug(l2)}`;
     const [bgBase, inkBase] = colores[l2] ?? ['#FBF1EC', '#7A0A33'];
     return {
       ...base,
-      id: `${grupo.sub}-${slug(l2)}`,
+      id,
+      ...(conImagen && { imagen: imagen ?? rutaImagen(id) }),
       l2,
       descripcion: descripcion(l2),
       extra: extra ?? grupo.extra,
@@ -132,12 +139,18 @@ export const productos: Producto[] = [
     {
       categoria: 'premezclas',
       sub: 'cake-mix',
+      prefijoId: 'cakemix',
       estante: 'a',
       l1: 'Cake mix',
       extra: SOLO_LECHE,
       descripcion: (s) => `Polvo para preparar Bizcochuelo Horno sabor ${s} 420gr.`,
     },
-    sabores('Chocolate', 'Vainilla', 'Limón', 'Naranja', 'Red velvet', 'Coco', 'Mundial'),
+    sabores('Chocolate', 'Vainilla', 'Limón', 'Naranja', 'Red velvet', 'Coco', 'Mundial').map((s) => ({
+      ...s,
+      conImagen: true,
+      // cakemix-redvelvet.webp no sigue el slug estándar (cakemix-red-velvet)
+      ...(s.l2 === 'Red velvet' && { imagen: rutaImagen('cakemix-redvelvet') }),
+    })),
   ),
   ...crear(
     {
